@@ -1,7 +1,7 @@
 Lab 03 - Nobel laureates
 ================
-Insert your name here
-Insert date here
+Graham Overheu
+5/29/2006
 
 ### Load packages and data
 
