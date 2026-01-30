@@ -43,41 +43,12 @@ nobel_living <- nobel_living %>%
 
 The graph below shows that for every science category, the majority of Nobel Prize winners were based in the USA when they won the award, particularly for the field of economics.
 
-
 ### Exercise 4
-
-```{r}
-sum(nobel_living_science$born_country_us == "USA")
-```
-The total number of laureates that were born in the US is 105.
 
 
 ### Exercise 5
-```{r}
-nobel_living_science <- nobel_living_science %>%
-  mutate(
-    born_country_other = if_else(born_country == "USA", "USA", "Other")
-  )
-```
-```{r}
-ggplot(nobel_living_science, aes(x = country_us, fill = born_country_other)) +
-  geom_bar() +
-  facet_wrap(~ category) +
-  coord_flip() +
-  labs(
-    x = "Country Award was Received in",
-    y = "Number of laureates",
-    fill = "Born in",
-    title = "Birth Country vs. Award Country of Living Nobel Laureates"
-  )
-```
+
 Yes, the graph supports BuzzFeed's claim that of those US-based Nobel laureates, many of them were born in other countries. While there weren't many compared to the number of those who were born in the US, it can still be said that a reasonable amount of them were not born in the US; for instance, for medicine, the number of laureates who received the award in the USA but were born in a different country takes up around 25-30% of the "USA" bar.
 
 ### Exercise 6
-
-```{r}
-nobel_living_science %>%
-  filter(country == "USA", born_country != "USA") %>%
-  count(born_country, sort = TRUE)
-```
-Germany and the United Kingdom are the most common countries.
+Germany and the United Kingdom are the most common.

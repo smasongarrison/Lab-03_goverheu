@@ -1,0 +1,63 @@
+Lab 03 - Nobel laureates
+================
+Graham Overheu
+5/29/2006
+
+### Load packages and data
+
+``` r
+library(tidyverse) 
+```
+
+``` r
+nobel <- read_csv("data/nobel.csv")
+```
+
+## Exercises
+
+### Exercise 1
+
+There are `nrow(nobel)` observations and `ncol(nobel)` variables. Each
+row represents one individual Nobel Prize given out to the winner.
+
+### Exercise 2
+
+``` r
+nobel_living <- nobel %>% 
+  filter(
+    is.na(died_date),
+    !is.na(country),
+    gender != "org"
+  )
+```
+
+There are `nrow(nobel_living)` observations in the data set.
+
+### Exercise 3
+
+``` r
+nobel_living <- nobel_living %>%
+  mutate(
+    country_us = if_else(country == "USA", "USA", "Other")
+  )
+```
+
+The graph below shows that for every science category, the majority of
+Nobel Prize winners were based in the USA when they won the award,
+particularly for the field of economics.
+
+### Exercise 4
+
+### Exercise 5
+
+Yes, the graph supports BuzzFeed’s claim that of those US-based Nobel
+laureates, many of them were born in other countries. While there
+weren’t many compared to the number of those who were born in the US, it
+can still be said that a reasonable amount of them were not born in the
+US; for instance, for medicine, the number of laureates who received the
+award in the USA but were born in a different country takes up around
+25-30% of the “USA” bar.
+
+### Exercise 6
+
+Germany and the United Kingdom are the most common.
